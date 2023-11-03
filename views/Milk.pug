@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  - let results = [{ name: "Raw Milk", price: 15.99, type: "whole milk" },{ name: "Buttermilk", price: 20.99, type: "reduced-fat milk" },{ name: "Cashew Milk", price: 6.45, type: "fat-free milk" }]
+  div.container-fluid
+    div.row
+      each milk,index in results
+       div.col-sm-2(onclick=`buy(${index})`) #{milk.name}
+       div.col-sm-2(onclick=`buy(${index})`) #{milk.type}
+       div.col-sm-2(onclick=`buy(${index})`) #{milk.price}
+       br
+       hr
+
+  script. 
+      function buy(index)
+      {
+        alert(`you purchased Item ${index+1}`)
+      }
