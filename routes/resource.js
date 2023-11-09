@@ -10,11 +10,11 @@ router.get('/', api_controller.api);
 // POST request for creating a Costume.
 router.post('/Milk', costume_controller.milk_create_post);
 // DELETE request to delete Costume.
-router.delete('/Milk/:id', costume_controller.milk_delete);
+router.delete('/Milk/:id', costume_controller.costume_delete);
 // PUT request to update Costume.
-router.put('/Milk/:id', costume_controller.milk_update_put);
+router.put('/Milk/:id', costume_controller.costume_update_put);
 // GET request for one Costume.
-router.get('/Milk/:id', costume_controller.milk_detail);
+router.get('/Milk/:id', costume_controller.costume_delete);
 // GET request for list of all Costume items.
 router.get('/Milk', costume_controller.Milk_list);
 module.exports = router

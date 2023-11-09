@@ -53,7 +53,7 @@ res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
 exports.Milk_view_all_Page = async function(req, res) {
     try{
     theCostumes = await Costume.find();
-    res.render('Milk', { title: 'Milk Search Results', results: theCostumes });
+    res.render('Milk', { title: 'Milk Search Results', result: theCostumes });
     }
     catch(err){
     res.status(500);

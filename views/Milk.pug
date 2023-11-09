@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - let results = [{ name: "Raw Milk", price: 15.99, type: "whole milk" },{ name: "Buttermilk", price: 20.99, type: "reduced-fat milk" },{ name: "Cashew Milk", price: 6.45, type: "fat-free milk" }]
+  - let results = result
   div.container-fluid
     div.row
       each milk,index in results
