@@ -1,9 +1,6 @@
 var express = require('express');
+const costume_controlers= require('../controllers/Milk');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('milk', { title: 'Search Results milk' });
-});
-
+/* GET costumes */
+router.get('/', costume_controlers.Milk_view_all_Page );
 module.exports = router;

@@ -8,7 +8,7 @@ var costume_controller = require('../controllers/Milk');
 router.get('/', api_controller.api);
 /// COSTUME ROUTES ///
 // POST request for creating a Costume.
-router.post('/costumes', costume_controller.costume_create_post);
+router.post('/Milk', costume_controller.milk_create_post);
 // DELETE request to delete Costume.
 router.delete('/costumes/:id', costume_controller.costume_delete);
 // PUT request to update Costume.
@@ -16,5 +16,5 @@ router.put('/costumes/:id', costume_controller.costume_update_put);
 // GET request for one Costume.
 router.get('/costumes/:id', costume_controller.costume_detail);
 // GET request for list of all Costume items.
-router.get('/costumes', costume_controller.costume_list);
-module.exports = router;
+router.get('/Milk', costume_controller.Milk_list);
+module.exports = router
