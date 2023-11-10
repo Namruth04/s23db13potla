@@ -1,6 +1,9 @@
 var express = require('express');
-const costume_controlers= require('../controllers/Milk');
+const Milk_controlers= require('../controllers/Milk');
 var router = express.Router();
-/* GET costumes */
-router.get('/', costume_controlers.Milk_view_all_Page );
-module.exports = router;
+/* GET Milk */
+router.get('/', Milk_controlers.Milk_view_all_Page );
+// GET request for one Milk.
+router.get('/Milks/:id', Milk_controlers.Milk_detail);
+module.exports = router
+
