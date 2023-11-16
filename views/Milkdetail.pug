@@ -1,22 +1,24 @@
 extends layout
 
 block content
- h1= title 
- 
- - let Milkid = toShow._id
- - let Milkname = toShow.name
- - let Milktype = toShow.type
- - let Milkprice = toShow.price
- div
-  div.row
-   div(class='MilkAttr mr-3') Milk ID is:
-   div #{Milkid}
-  div.row
-   div(class='MilkAttr mr-3') Milk Name is:
-   div #{Milkname}
-  div.row
-   div(class='MilkAttr mr-3') Milk Type is:
-   div #{Milktype}
-  div.row
-   div(class='MilkAttr mr-3') Milk Price is:
-   div #{Milkprice}
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Milkid = toShow._id
+    - let Milkname = toShow.name
+    - let Milktype = toShow.type
+    - let Milkprice = toShow.price
+    div
+      div.row
+        div(class='MilkAttr mr-3') Milk ID is:
+        div #{Milkid}
+      div.row
+        div(class='MilkAttr mr-3') Milk Name is:
+        div #{Milkname}
+      div.row
+        div(class='MilkAttr mr-3') Milk Type is:
+        div #{Milktype}
+      div.row
+        div(class='MilkAttr mr-3') Milk Price is:
+        div #{Milkprice}
