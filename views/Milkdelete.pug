@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Milkid = toShow._id
+    - let milkname = toShow.name
+    - let Milktype = toShow.type
+    - let Milkprice = toShow.price
+    - let actionid = "/resource/Milk/" + Milkid
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='MilkAttr mr-3') Milk ID is:
+          div #{Milkid}
+        div.row
+          div(class='MilkAttr mr-3') Milk Type is:
+            div #{milkname}
+        div.row
+          div(class='MilkAttr mr-3') Milk Size is:
+            div #{Milktype}
+        div.row
+          div(class='MilkAttr mr-3') Milk Cost is:
+            div #{Milkprice}
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the Milk collection
+        window.location.href='/Milk'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/Milk'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error )
+        });
+      }

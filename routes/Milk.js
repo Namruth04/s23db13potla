@@ -13,3 +13,9 @@ router.get('/detail', Milk_controlers.Milk_view_one_Page);
 
 /* GET create Milk page */
 router.get('/create', Milk_controlers.Milk_create_Page);
+
+/* GET create update page */
+router.get('/update', Milk_controlers.Milk_update_Page);
+
+/* GET delete Milk page */
+router.get('/delete', Milk_controlers.Milk_delete_Page);

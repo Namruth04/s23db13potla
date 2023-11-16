@@ -137,3 +137,31 @@ exports.Milk_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+
+    // Handle building the view for updating a Milk.
+// query provides the id
+exports.Milk_update_Page = async function(req, res) {
+console.log("update view for item "+req.query.id)
+try{
+let result = await Milk.findById(req.query.id)
+res.render('Milkupdate', { title: 'Milk Update', toShow: result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+
+// Handle a delete one view with id from query
+exports.Milk_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Milk.findById(req.query.id)
+    res.render('Milkdelete', { title: 'Milk Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
