@@ -1,64 +1,57 @@
-////var express = require('express');
-//var router = express.Router();
-
-/* GET home page. */
-//router.get('/', function (req, res, next) {
-  //res.render('index', { title: 'Namruth Potla' });
-//});
-
-//module.exports = router;
-
-
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 var Account = require('../models/account');
+
 router.get('/', function (req, res) {
   res.render('index', { title: 'Milk App', user: req.user });
 });
+
 router.get('/register', function (req, res) {
   res.render('register', { title: 'Milk App Registration' });
 });
+
 router.post('/register', function (req, res) {
   Account.findOne({ username: req.body.username })
     .then(function (user) {
       if (user != null) {
-        console.log("exists " + req.body.username)
-        return res.render('register', {
-          title: 'Registration',
-          message: 'Existing User', account: req.body.username
-        })
+        console.log("exists " + req.body.username);
+        return res.render('register', { title: 'Registration',message: 'Existing User',account: req.body.username});
       }
+
       let newAccount = new Account({ username: req.body.username });
       Account.register(newAccount, req.body.password, function (err, user) {
         if (err) {
-          console.log("db creation issue " + err)
+          console.log("db creation issue " + err);
           return res.render('register', {
             title: 'Registration',
-            message: 'access error', account: req.body.username
-          })
+            message: 'access error',
+            account: req.body.username
+          });
         }
+
         if (!user) {
           return res.render('register', {
             title: 'Registration',
-            message: 'access error', account: req.body.username
-          })
+            message: 'access error',
+            account: req.body.username
+          });
         }
-      })
-      console.log('Sucess, redirect');
+      });
+
+      console.log('Success, redirect');
       res.redirect('/');
     })
     .catch(function (err) {
       return res.render('register', {
         title: 'Registration',
-        message: 'Registration error', account: req.body.username
-      })
-    })
+        message: 'Registration error',
+        account: req.body.username
+      });
+    });
 });
 
-router.post('/login', passport.authenticate('local'), function (req, res) {
-  res.redirect('/');
-});
+module.exports = router;
 
 router.get('/login', function (req, res) {
   res.render('login', { title: 'Milk App Login', user: req.user });
@@ -74,11 +67,14 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
   });
 });
+
 router.get('/ping', function (req, res) {
   res.status(200).send("pong!");
 });
-module.exports = router;
+
+
 router.get('/ping', function (req, res) {
   res.status(200).send("pong!");
 });
+
 module.exports = router;
